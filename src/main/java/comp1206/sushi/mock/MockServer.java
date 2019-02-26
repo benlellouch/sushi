@@ -1,16 +1,12 @@
 package comp1206.sushi.mock;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Random;
-
-import javax.swing.JOptionPane;
-
 import comp1206.sushi.common.*;
 import comp1206.sushi.server.ServerInterface;
+
+import java.util.*;
+import java.util.Map.Entry;
+
+//import javax.swing.JOptionPane;
 
 public class MockServer implements ServerInterface {
 

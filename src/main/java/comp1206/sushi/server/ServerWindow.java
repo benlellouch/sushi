@@ -17,9 +17,6 @@ public class ServerWindow extends Application implements UpdateListener {
     private static final long serialVersionUID = -4661566573959270000L;
     private ServerInterface server;
 
-    public ServerWindow(ServerInterface server){
-        this.server = server;
-    }
 
     public static void main(String[] args) {
         launch(args);
@@ -27,9 +24,20 @@ public class ServerWindow extends Application implements UpdateListener {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("ServerWindow.fxml"));
+
+      Parent root = FXMLLoader.load(getClass().getResource("window.fxml"));
+//        GridPane root = new GridPane();
+//        root.setAlignment(Pos.CENTER);
+//        root.setVgap(10);
+//        root.setHgap(10);
+//
+//        Label greeting = new Label("Welcome to JavaFX!");
+//        greeting.setTextFill(Color.GREEN);
+//        greeting.setFont(Font.font("Times New Roman", FontWeight.BOLD, 70));
+//
+//        root.getChildren().add(greeting);
         primaryStage.setTitle("Server Window");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 700, 275));
         primaryStage.show();
     }
 
