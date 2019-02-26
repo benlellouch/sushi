@@ -1,66 +1,57 @@
 package comp1206.sushi.server;
 
+import comp1206.sushi.common.UpdateEvent;
+import comp1206.sushi.common.UpdateListener;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.*;
+public class ServerWindow extends Application implements UpdateListener {
 
-import comp1206.sushi.common.*;
-import comp1206.sushi.server.ServerInterface.UnableToDeleteException;
+    private static final long serialVersionUID = -4661566573959270000L;
+    private ServerInterface server;
 
-/**
- * Provides the Sushi Server user interface
- *
- */
-public class ServerWindow extends JFrame implements UpdateListener {
+    public ServerWindow(ServerInterface server){
+        this.server = server;
+    }
 
-	private static final long serialVersionUID = -4661566573959270000L;
-	private ServerInterface server;
-	
-	/**
-	 * Create a new server window
-	 * @param server instance of server to interact with
-	 */
-	public ServerWindow(ServerInterface server) {
-		super("Sushi Server");
-		this.server = server;
-		this.setTitle(server.getRestaurantName() + " Server");
-		server.addUpdateListener(this);
-		
-		//Display window
-		setSize(800,600);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
-		
-		//Start timed updates
-		startTimer();
-	}
-	
-	/**
-	 * Start the timer which updates the user interface based on the given interval to update all panels
-	 */
-	public void startTimer() {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);     
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("ServerWindow.fxml"));
+        primaryStage.setTitle("Server Window");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
+    }
+
+    public void startTimer() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         int timeInterval = 5;
-        
+
         scheduler.scheduleAtFixedRate(() -> refreshAll(), 0, timeInterval, TimeUnit.SECONDS);
-	}
-	
-	/**
-	 * Refresh all parts of the server application based on receiving new data, calling the server afresh
-	 */
-	public void refreshAll() {
-		
-	}
-	
-	@Override
-	/**
-	 * Respond to the model being updated by refreshing all data displays
-	 */
-	public void updated(UpdateEvent updateEvent) {
-		refreshAll();
-	}
-	
+    }
+
+    /**
+     * Refresh all parts of the server application based on receiving new data, calling the server afresh
+     */
+    public void refreshAll() {
+
+    }
+
+    @Override
+    /**
+     * Respond to the model being updated by refreshing all data displays
+     */
+    public void updated(UpdateEvent updateEvent) {
+        refreshAll();
+    }
 }
