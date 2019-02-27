@@ -6,12 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<TabPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="comp1206.sushi.server.ServerWindow"
+            fx:controller="comp1206.sushi.MasterTab"
             prefHeight="400.0" prefWidth="600.0">
-    <Label text="Kurrrrrwa">
-
-    </Label>
-
-</AnchorPane>
+        <Tab text="new tab"></Tab>
+</TabPane>

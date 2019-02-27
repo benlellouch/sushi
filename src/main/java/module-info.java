@@ -5,6 +5,7 @@ module sushi {
         requires javafx.base;
         requires javafx.media;
 
+        opens comp1206.sushi.server;
         opens comp1206.sushi;
 
 }

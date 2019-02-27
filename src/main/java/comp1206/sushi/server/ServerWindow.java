@@ -2,7 +2,6 @@ package comp1206.sushi.server;
 
 import comp1206.sushi.common.UpdateEvent;
 import comp1206.sushi.common.UpdateListener;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,20 +11,23 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class ServerWindow extends Application implements UpdateListener {
+public class ServerWindow extends Stage implements UpdateListener {
 
     private static final long serialVersionUID = -4661566573959270000L;
     private ServerInterface server;
 
 
-    public static void main(String[] args) {
-        launch(args);
+
+    public ServerWindow (ServerInterface server){
+        this.server=server;
+        server.addUpdateListener(this);
+        //start();
+        startTimer();
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-
-      Parent root = FXMLLoader.load(getClass().getResource("window.fxml"));
+    public void start()  {
+    try {
+       Parent root = FXMLLoader.load(getClass().getResource("/fxml/window.fxml"));
 //        GridPane root = new GridPane();
 //        root.setAlignment(Pos.CENTER);
 //        root.setVgap(10);
@@ -36,9 +38,12 @@ public class ServerWindow extends Application implements UpdateListener {
 //        greeting.setFont(Font.font("Times New Roman", FontWeight.BOLD, 70));
 //
 //        root.getChildren().add(greeting);
-        primaryStage.setTitle("Server Window");
-        primaryStage.setScene(new Scene(root, 700, 275));
-        primaryStage.show();
+        this.setTitle(server.getRestaurantName() + "Server");
+        this.setScene(new Scene(root, 700, 275));
+        this.show();
+    }catch (Exception e){}
+
+
     }
 
     public void startTimer() {
