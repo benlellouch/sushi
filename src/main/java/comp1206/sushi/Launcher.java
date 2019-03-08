@@ -1,6 +1,8 @@
 package comp1206.sushi;
 
-public class Launcher {
+public class
+
+Launcher {
 
 	public static void main(String[] argv) {		
 		if(argv.length > 0 && argv[0].equals("client")) {

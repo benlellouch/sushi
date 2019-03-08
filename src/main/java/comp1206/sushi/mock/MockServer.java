@@ -18,7 +18,7 @@ public class MockServer implements ServerInterface {
 	public ArrayList<Staff> staff = new ArrayList<Staff>();
 	public ArrayList<Supplier> suppliers = new ArrayList<Supplier>();
 	public ArrayList<User> users = new ArrayList<User>();
-	public ArrayList<Postcode> postcodes = new ArrayList<Postcode>();
+	public ArrayList<Postcode> postcodes = new ArrayList<>();
 	private ArrayList<UpdateListener> listeners = new ArrayList<UpdateListener>();
 	
 	public MockServer() {

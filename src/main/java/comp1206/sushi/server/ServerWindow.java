@@ -1,50 +1,69 @@
 package comp1206.sushi.server;
 
+import comp1206.sushi.PostcodeTab;
+import comp1206.sushi.common.Postcode;
 import comp1206.sushi.common.UpdateEvent;
 import comp1206.sushi.common.UpdateListener;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class ServerWindow extends Stage implements UpdateListener {
+public class ServerWindow extends Application implements UpdateListener {
 
     private static final long serialVersionUID = -4661566573959270000L;
     private ServerInterface server;
+    @FXML private Button updateButton;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+
+    @Override
+    public void start(Stage stage) throws ReflectiveOperationException, IOException {
+        String serverClassName = getParameters().getRaw().get(0);
+        Class<? extends ServerInterface> serverClass = Class.forName(serverClassName).asSubclass(ServerInterface.class);
+        this.server = serverClass.getConstructor().newInstance();
+
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/window.fxml"));
+        VBox root = new VBox();
+        TabPane tabs = new TabPane();
+       PostcodeTab tab = new PostcodeTab("Postcode");
+        tabs.getTabs().add(tab);
+        root.getChildren().add(tabs);
 
 
 
-    public ServerWindow (ServerInterface server){
-        this.server=server;
+        stage.setTitle(server.getRestaurantName() + "Server");
+        stage.setScene(new Scene(root));
         server.addUpdateListener(this);
-        //start();
-        startTimer();
+        stage.show();
     }
 
-    public void start()  {
-    try {
-       Parent root = FXMLLoader.load(getClass().getResource("/fxml/window.fxml"));
-//        GridPane root = new GridPane();
-//        root.setAlignment(Pos.CENTER);
-//        root.setVgap(10);
-//        root.setHgap(10);
-//
-//        Label greeting = new Label("Welcome to JavaFX!");
-//        greeting.setTextFill(Color.GREEN);
-//        greeting.setFont(Font.font("Times New Roman", FontWeight.BOLD, 70));
-//
-//        root.getChildren().add(greeting);
-        this.setTitle(server.getRestaurantName() + "Server");
-        this.setScene(new Scene(root, 700, 275));
-        this.show();
-    }catch (Exception e){}
-
+    public void init(){
 
     }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        System.exit(0);
+    }
+
+    public ServerWindow() {
+
+    }
+
 
     public void startTimer() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -67,4 +86,23 @@ public class ServerWindow extends Stage implements UpdateListener {
     public void updated(UpdateEvent updateEvent) {
         refreshAll();
     }
+
+    @FXML
+    private TableView<Postcode> tableView;
+    @FXML
+    private TextField postcodeField;
+    @FXML
+    private TextField distanceField;
+
+    public void addPostcode(ActionEvent event){
+        ObservableList<Postcode> data = tableView.getItems();
+        data.add(new Postcode(postcodeField.getText()));
+        this.server.addPostcode(postcodeField.getText());
+        postcodeField.setText("");
+    }
+
+
+
 }
+
+

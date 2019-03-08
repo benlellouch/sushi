@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+
+
+<VBox fx:id="view" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" >
+    <Label fx:id="lblTest"></Label>
+    <TableView fx:id="foldersTableView">
+        <columns>
+            <TableColumn prefWidth="75.0" text="N°" fx:id="colFolderNumber">
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="Personne" fx:id="colPerson">
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="Date de naissance" fx:id="colBirthdayDate">
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>

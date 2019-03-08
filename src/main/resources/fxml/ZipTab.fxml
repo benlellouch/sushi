@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="view" spacing="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.ServerWindow"   >
+    <padding><Insets bottom="10" left="10" right="10" top="10" /></padding>
+    <Label fx:id="lblTest" />
+    <TableView fx:id="tableView" prefWidth="400">
+        <columns>
+            <TableColumn fx:id="colPostCode" prefWidth="200" text="PostCode">
+                <cellValueFactory><PropertyValueFactory property="name" /> </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="colDistance" prefWidth="200" text="Distance">
+                <cellValueFactory><PropertyValueFactory property="distance" /> </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    <VBox>
+        <TextField fx:id="postcodeField" prefWidth="200.0">
+        </TextField>
+        <Button fx:id="updateButton" prefWidth="200.0" text="Update" onAction="#addPostcode" />
+    </VBox>
+</HBox>

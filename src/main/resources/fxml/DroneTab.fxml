@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+
+
+<?import javafx.geometry.Insets?>
+<HBox fx:id="view" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"  spacing="10">
+    <padding><Insets top="10" right="10" left="10" bottom="10"/></padding>
+    <Label fx:id="lblTest"></Label>
+    <TableView fx:id="foldersTableView" >
+        <columns>
+            <TableColumn prefWidth="100.0" text="Name" fx:id="colName">
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Progress" fx:id="colProgress">
+            </TableColumn>
+            <TableColumn prefWidth="100" text="Status" fx:id="colStatus">
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Battery" fx:id="colBattery">
+            </TableColumn>
+            <TableColumn prefWidth="100" text="Source" fx:id="colSource">
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Destination" fx:id="colDestination">
+            </TableColumn>
+
+        </columns>
+    </TableView>
+    <VBox spacing="10" >
+        <TextField prefWidth="200.0">
+        </TextField>
+        <Button text="Add Drone" prefWidth="200.0"></Button>
+        <Button text="Remove Selected" prefWidth="200.0"></Button>
+    </VBox>
+</HBox>
