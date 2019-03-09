@@ -1,15 +1,13 @@
 package comp1206.sushi.server;
 
-import comp1206.sushi.PostcodeTab;
-import comp1206.sushi.common.Postcode;
+import comp1206.sushi.Tabs.*;
 import comp1206.sushi.common.UpdateEvent;
 import comp1206.sushi.common.UpdateListener;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -38,8 +36,12 @@ public class ServerWindow extends Application implements UpdateListener {
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/window.fxml"));
         VBox root = new VBox();
         TabPane tabs = new TabPane();
-       PostcodeTab tab = new PostcodeTab("Postcode");
-        tabs.getTabs().add(tab);
+        MainTab postcodeTab = new PostcodeTab("Postcode", server);
+        MainTab droneTab = new DroneTab("Drones", server);
+        MainTab staffTab = new StaffTab("Staff", server);
+        MainTab supplierTab = new SupplierTab("Supplier", server);
+
+        tabs.getTabs().addAll(postcodeTab,droneTab, staffTab, supplierTab);
         root.getChildren().add(tabs);
 
 
@@ -87,22 +89,9 @@ public class ServerWindow extends Application implements UpdateListener {
         refreshAll();
     }
 
-    @FXML
-    private TableView<Postcode> tableView;
-    @FXML
-    private TextField postcodeField;
-    @FXML
-    private TextField distanceField;
-
-    public void addPostcode(ActionEvent event){
-        ObservableList<Postcode> data = tableView.getItems();
-        data.add(new Postcode(postcodeField.getText()));
-        this.server.addPostcode(postcodeField.getText());
-        postcodeField.setText("");
+    public ServerInterface getServer() {
+        return server;
     }
-
-
-
 }
 
 

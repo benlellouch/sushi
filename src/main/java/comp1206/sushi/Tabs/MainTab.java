@@ -1,4 +1,4 @@
-package comp1206.sushi;
+package comp1206.sushi.Tabs;
 
 import javafx.scene.control.Tab;
 
@@ -6,6 +6,7 @@ public class MainTab extends Tab {
 
     public MainTab(String name){
         super(name);
+        this.setClosable(false);
 //        HBox superBox = new HBox();
 //        VBox inputBox = new VBox();
 //        TableView<Postcode> postcodeTableView = new TableView<>();

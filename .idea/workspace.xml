@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bc5e87a-10ee-4f04-8d2f-8c95f20620b4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/Controller/PostcodeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/PostcodeTab.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/FoodTab.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/StaffTab.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/ZipTab.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/DroneTab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/PostcodeTab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/StaffTab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/SupplierTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp1206/sushi/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp1206/sushi/MasterTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/MainTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp1206/sushi/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/ServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/comp1206/sushi/mock/MockServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/mock/MockServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp1206/sushi/MainTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/MainTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/comp1206/sushi/PostcodeTab.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/comp1206/sushi/server/ServerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/comp1206/sushi/server/ServerWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/mastertab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/DroneTab.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/window.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,6 +28,43 @@
   </component>
   <component name="CoverageViewManager">
     <option name="myElementSize" value="424" />
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Drone.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="391">
+                    <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Staff.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="92">
+                    <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Supplier.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="92">
+                    <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1978584606">
@@ -72,15 +102,15 @@
     <session id="1117885068">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
-          <entry key="project.open.time.0" value="4" />
+          <entry key="project.closed" value="19" />
+          <entry key="project.open.time.0" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.8" value="4" />
-          <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.open.time.9" value="4" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -89,7 +119,7 @@
           <entry key="fxml" value="15" />
           <entry key="gitattributes" value="1" />
           <entry key="iml" value="2" />
-          <entry key="java" value="56" />
+          <entry key="java" value="72" />
           <entry key="md" value="1" />
           <entry key="xml" value="5" />
         </counts>
@@ -98,7 +128,7 @@
         <counts>
           <entry key="CLASS" value="2" />
           <entry key="IDEA_MODULE" value="2" />
-          <entry key="JAVA" value="56" />
+          <entry key="JAVA" value="72" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="XML" value="20" />
         </counts>
@@ -107,16 +137,16 @@
         <counts>
           <entry key="fxml" value="1635" />
           <entry key="iml" value="5" />
-          <entry key="java" value="4489" />
-          <entry key="txt" value="419" />
+          <entry key="java" value="6511" />
+          <entry key="txt" value="632" />
           <entry key="xml" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="IDEA_MODULE" value="5" />
-          <entry key="JAVA" value="4489" />
-          <entry key="PLAIN_TEXT" value="419" />
+          <entry key="JAVA" value="6511" />
+          <entry key="PLAIN_TEXT" value="632" />
           <entry key="XML" value="1652" />
         </counts>
       </usages-collector>
@@ -127,20 +157,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/server/ServerWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="40" column="53" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
+            <state relative-caret-position="870">
+              <caret line="43" column="73" selection-start-line="43" selection-start-column="73" selection-end-line="43" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/MainTab.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="17" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -155,28 +176,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Order.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/MainTab.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="184">
+              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Staff.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/PostcodeTab.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/PostcodeTab.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+            <state>
+              <caret selection-end-line="89" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -185,13 +197,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/ZipTab.fxml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/DroneTab.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+            <state relative-caret-position="1021">
+              <caret line="80" column="48" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -209,7 +223,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/mock/MockServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2852">
+            <state relative-caret-position="2668">
               <caret line="132" column="28" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -218,11 +232,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/module-info.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/SupplierTab.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+            <state relative-caret-position="1610">
+              <caret line="75" column="35" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/UpdateEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/StaffTab.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1541">
+              <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -264,9 +302,14 @@
         <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/ServerApplication.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/window.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/server/PostcodeTab.java" />
-        <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/server/ServerWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/MainTab.java" />
         <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/PostcodeTab.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/PostcodeTab.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/MainTab.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/DroneTab.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/StaffTab.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/server/ServerWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/SupplierTab.java" />
       </list>
     </option>
   </component>
@@ -279,7 +322,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1294" />
+    <option name="width" value="1460" />
     <option name="height" value="1407" />
   </component>
   <component name="ProjectView">
@@ -287,8 +330,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -338,7 +379,34 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sushi" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sushi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sushi" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sushi" type="462c0819:PsiDirectoryNode" />
+              <item name="mock" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sushi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sushi" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sushi" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sushi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sushi" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sushi" type="462c0819:PsiDirectoryNode" />
+              <item name="Tabs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sushi" type="b2602c69:ProjectViewProjectNode" />
@@ -365,10 +433,12 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552086119800" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552173254916" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lib/javafx-sdk-11.0.2/lib/javafx.fxml.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -404,7 +474,7 @@
       <module name="sushi" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="comp1206.sushi.*" />
+          <option name="PATTERN" value="comp1206.sushi.Tabs.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -417,7 +487,7 @@
       <module name="sushi" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="comp1206.sushi.*" />
+          <option name="PATTERN" value="comp1206.sushi.Tabs.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -430,7 +500,7 @@
       <module name="sushi" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="comp1206.sushi.*" />
+          <option name="PATTERN" value="comp1206.sushi.Tabs.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -490,14 +560,21 @@
       <option name="project" value="LOCAL" />
       <updated>1551286332740</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="I've gone back to coding the ui instead of trying to use fxml. i'll have a mainTab class from which all the other classes inherit ... I still don't know how i'm going to implement the controllers.">
+      <created>1552086368405</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1552086368405</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1294" height="1407" extended-state="0" />
+    <frame x="-7" y="0" width="1460" height="1407" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33333334" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15373962" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -505,8 +582,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32943013" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38407496" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286495" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19437939" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -514,7 +591,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32713178" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.16821705" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.16774194" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -599,14 +676,15 @@
     <MESSAGE value="changed the maven config file in hopes that it compiles." />
     <MESSAGE value="So it sorta works now but fxml file won't open. I may be restrained to only use code to build gui." />
     <MESSAGE value="The fxml import now works. I am playing around with the structure &#10;of javaFX to understand how it works." />
-    <option name="LAST_COMMIT_MESSAGE" value="The fxml import now works. I am playing around with the structure &#10;of javaFX to understand how it works." />
+    <MESSAGE value="I've gone back to coding the ui instead of trying to use fxml. i'll have a mainTab class from which all the other classes inherit ... I still don't know how i'm going to implement the controllers." />
+    <option name="LAST_COMMIT_MESSAGE" value="I've gone back to coding the ui instead of trying to use fxml. i'll have a mainTab class from which all the other classes inherit ... I still don't know how i'm going to implement the controllers." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/comp1206/sushi/server/ServerWindow.java</url>
-          <line>20</line>
+          <line>18</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -679,13 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/UpdateEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -712,13 +783,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/mastertab.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Drone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Model/Postcode.java" />
     <entry file="jar://$PROJECT_DIR$/../../lib/javafx-sdk-11.0.2/lib/javafx.controls.jar!/javafx/scene/control/TableView.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -728,20 +792,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/StaffTab.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/FoodTab.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="8" column="92" selection-start-line="8" selection-start-column="92" selection-end-line="8" selection-end-column="92" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/server/ServerInterface.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -750,42 +814,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Postcode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Ingredient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/DroneTab.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="36" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/mock/MockServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2852">
-          <caret line="132" column="28" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/module-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -804,17 +837,128 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/window.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/ServerApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/ZipTab.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/module-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Ingredient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Dish.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Postcode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Drone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Staff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/DroneTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1021">
+          <caret line="80" column="48" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/StaffTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1541">
+          <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/MainTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/PostcodeTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/mock/MockServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2668">
+          <caret line="132" column="28" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -831,56 +975,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/server/ServerWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="40" column="53" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Staff.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/Supplier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/ZipTab.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/server/ServerWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/MainTab.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="17" selection-end-column="36" />
+        <state relative-caret-position="870">
+          <caret line="43" column="73" selection-start-line="43" selection-start-column="73" selection-end-line="43" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/PostcodeTab.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/common/UpdateEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+        <state relative-caret-position="46">
+          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/comp1206/sushi/Tabs/SupplierTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1610">
+          <caret line="75" column="35" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
