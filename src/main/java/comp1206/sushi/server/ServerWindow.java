@@ -4,9 +4,7 @@ import comp1206.sushi.Tabs.*;
 import comp1206.sushi.common.UpdateEvent;
 import comp1206.sushi.common.UpdateListener;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -20,7 +18,7 @@ public class ServerWindow extends Application implements UpdateListener {
 
     private static final long serialVersionUID = -4661566573959270000L;
     private ServerInterface server;
-    @FXML private Button updateButton;
+
 
     public static void main(String[] args) {
         launch(args);
@@ -40,8 +38,10 @@ public class ServerWindow extends Application implements UpdateListener {
         MainTab droneTab = new DroneTab("Drones", server);
         MainTab staffTab = new StaffTab("Staff", server);
         MainTab supplierTab = new SupplierTab("Supplier", server);
+        MainTab ingredientTab = new IngredientTab("Ingredients", server);
+        MainTab dishTab = new DishTab("Dishes",server);
 
-        tabs.getTabs().addAll(postcodeTab,droneTab, staffTab, supplierTab);
+        tabs.getTabs().addAll(postcodeTab,droneTab, staffTab, supplierTab, ingredientTab,dishTab);
         root.getChildren().add(tabs);
 
 

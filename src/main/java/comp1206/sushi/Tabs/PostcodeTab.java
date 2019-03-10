@@ -39,7 +39,6 @@ public class PostcodeTab extends MainTab {
         TableColumn<Postcode, Map> latitudeColumn = new TableColumn<>("LatLong");
         latitudeColumn.setCellValueFactory(new PropertyValueFactory<>("latLong"));
 
-
         TableColumn<Postcode, Number> distanceColumn = new TableColumn<>("Distance");
         distanceColumn.setCellValueFactory(new PropertyValueFactory<>("distance"));
 
