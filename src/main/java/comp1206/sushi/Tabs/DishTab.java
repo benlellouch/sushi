@@ -2,10 +2,7 @@ package comp1206.sushi.Tabs;
 
 import comp1206.sushi.common.Dish;
 import comp1206.sushi.common.Ingredient;
-import comp1206.sushi.common.Supplier;
 import comp1206.sushi.server.ServerInterface;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
@@ -13,14 +10,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class DishTab extends MainTab {
 
     private ServerInterface server;
     private TableView<Dish> dishTableView;
-    private TableView<Ingredient> ingredientTableView;
+    private TableView<Recipe> recipeTableView;
     private ObservableList<Dish> dishObservableList;
     private ObservableList<Ingredient> ingredientObservableList;
-    private ObservableList<Ingredient> recipeObservableList;
+    private ObservableList<Recipe> recipeObservableList;
     private ComboBox<Ingredient> ingredientComboBox;
     private TextField nameInput;
     private TextField descriptionInput;
@@ -31,19 +31,32 @@ public class DishTab extends MainTab {
     public DishTab(String name, ServerInterface server){
         super(name);
         this.server = server;
-
         dishObservableList = FXCollections.observableArrayList(server.getDishes());
-//        ingredientObservableList = FXCollections.observableList(server.getIngredients());
+        ingredientObservableList = FXCollections.observableList(server.getIngredients());
+
 
         HBox superBox = new HBox();
 
         VBox recipeAndInputBox = new VBox();
-        ingredientTableView = new TableView<>();
+
         dishTableView = new TableView<>();
+
+        recipeTableView = new TableView<>();
+        // Table columns for Ingredient Table
+        TableColumn<Recipe,Ingredient> nameColumn = new TableColumn<>("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient"));
+
+        TableColumn<Recipe,Number> unitColumn = new TableColumn<>("Amount");
+        unitColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+        recipeTableView.getColumns().addAll(nameColumn, unitColumn);
+//        recipeTableView.setItems(ingredientObservableList);
+
+
 
         // Table columns for Dish Table
         TableColumn<Dish,String> dishNameColumn = new TableColumn<>("Name");
-        dishNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        dishNameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
 
         TableColumn<Dish,String> descriptionColumn = new TableColumn<>("Description");
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -59,42 +72,51 @@ public class DishTab extends MainTab {
 
         dishTableView.getColumns().addAll(dishNameColumn, descriptionColumn,priceColumn,dishRestockThresholdColumn,dishRestockAmountColumn);
         dishTableView.setItems(dishObservableList);
-        dishTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Dish>() {
-            @Override
-            public void changed(ObservableValue<? extends Dish> observableValue, Dish dish, Dish t1) {
-                ingredientTableView.setItems(FXCollections.observableArrayList(server.getIngredients()));
-            }
+
+
+        dishTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+//            Map<Ingredient,Number> recipe = newSelection.getRecipe();
+//            for(Map.Entry<Ingredient,Number> cursor: recipe.entrySet()){
+//                    Recipe newRecipe = new Recipe(cursor.getKey(), cursor.getValue());
+//                    recipeObservableList.add(newRecipe);
+//                }
+//                recipeTableView.setItems(recipeObservableList);
+//            Dish dish = dishTableView.getSelectionModel().getSelectedItem();
+            displayRecipe(newSelection);
+
         });
 
 
-        // Table columns for Ingredient Table
-        TableColumn<Ingredient,String> nameColumn = new TableColumn<>("Name");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        TableColumn<Ingredient,String> unitColumn = new TableColumn<>("Unit");
-        unitColumn.setCellValueFactory(new PropertyValueFactory<>("unit"));
+//        dishTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Dish>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Dish> observableValue, Dish dish, Dish t1) {
+//                Map<Ingredient,Number> recipe = observableValue.getValue().getRecipe();
+//
+//                for(Map.Entry<Ingredient,Number> cursor: recipe.entrySet()){
+//                    ObservableList<Recipe> testObservableList = null;
+//                    Recipe newRecipe = new Recipe(cursor.getKey(), cursor.getValue());
+//                    testObservableList.add(newRecipe);
+//                    recipeTableView.setItems(testObservableList);
+//                }
+//
+//            }
+//
+//        });
 
-        TableColumn<Ingredient, Supplier> supplierColumn = new TableColumn<>("Supplier");
-        supplierColumn.setCellValueFactory(new PropertyValueFactory<>("supplier"));
 
-        TableColumn<Ingredient, Number> restockThresholdColumn = new TableColumn<>("Restock Threshold");
-        restockThresholdColumn.setCellValueFactory(new PropertyValueFactory<>("restockThreshold"));
 
-        TableColumn<Ingredient, Number> restockAmountColumn = new TableColumn<>("Restock Amount");
-        restockAmountColumn.setCellValueFactory(new PropertyValueFactory<>("restockAmount"));
 
-        ingredientTableView.getColumns().addAll(nameColumn, unitColumn, supplierColumn,restockThresholdColumn,restockAmountColumn);
-//        ingredientTableView.setItems(ingredientObservableList);
 
         // Setting up the Add new Dish tab and the edit recipe tab
         TabPane addAndEditTab = new TabPane();
-        MainTab addTab = new AddDishTab("Add Dish", server, dishObservableList, dishTableView);
+        MainTab addTab = new AddDishTab("Add Dish", server, this);
 //        MainTab addTab = new MainTab("Add Placeholder");
 //        MainTab addTab = createAddDishTab();
-        Tab editTab = new Tab("Edit Placeholder");
+        MainTab editTab = new EditRecipeTab("Edit Recipe", this, server);
         addAndEditTab.getTabs().addAll(addTab,editTab );
 
-        recipeAndInputBox.getChildren().addAll(ingredientTableView, addAndEditTab);
+        recipeAndInputBox.getChildren().addAll(recipeTableView, addAndEditTab);
         superBox.getChildren().addAll(dishTableView, recipeAndInputBox);
         this.setContent(superBox);
 
@@ -105,9 +127,28 @@ public class DishTab extends MainTab {
         return dishObservableList;
     }
 
-    public void setDishObservableList(ObservableList<Dish> dishObservableList) {
-        this.dishObservableList = dishObservableList;
+
+
+    public void setDishTableView(ObservableList<Dish> dishObservableList) {
+        dishTableView.setItems(dishObservableList);
     }
+
+    public void setRecipeObservableList(ObservableList<Recipe> recipeObservableList) {
+        this.recipeObservableList = recipeObservableList;
+    }
+
+    public void setRecipeTableView(ObservableList<Recipe> recipeObservableList){
+        recipeTableView.setItems(recipeObservableList);
+    }
+
+    public TableView<Recipe> getRecipeTableView() {
+        return recipeTableView;
+    }
+
+    public ObservableList<Ingredient> getIngredientObservableList() {
+        return ingredientObservableList;
+    }
+    public TableView<Dish> getDishTableView(){return dishTableView;}
 
     //    public MainTab createAddDishTab(){
 //        MainTab addDishTab = new MainTab("Add Dish");
@@ -126,6 +167,27 @@ public class DishTab extends MainTab {
 //        addDishTab.setContent(superPane);
 //        return addDishTab;
 //    }
+    public void printtest(){
+        System.out.println("this is a test");
+    }
+    public void displayRecipe(Dish dish){
+        Map<Ingredient, Number> recipe = dish.getRecipe();
+        ArrayList<Recipe> recipeArrayList = new ArrayList<>();
+        for(Map.Entry<Ingredient,Number> cursor: recipe.entrySet()){
+            Recipe newRecipe = new Recipe(cursor.getKey(), cursor.getValue());
+            recipeArrayList.add(newRecipe);
+
+        }
+        ObservableList<Recipe> recipeObservableList = FXCollections.observableArrayList(recipeArrayList);
+        for (Recipe temp : recipeObservableList
+        ) {
+            System.out.println(temp.getIngredient().getName() + " " + temp.getAmount());
+
+        }
+
+        setRecipeTableView(recipeObservableList);
+
+    }
 
 
 }

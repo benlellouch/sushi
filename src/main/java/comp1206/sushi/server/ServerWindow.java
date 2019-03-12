@@ -34,14 +34,17 @@ public class ServerWindow extends Application implements UpdateListener {
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/window.fxml"));
         VBox root = new VBox();
         TabPane tabs = new TabPane();
-        MainTab postcodeTab = new PostcodeTab("Postcode", server);
+
         MainTab droneTab = new DroneTab("Drones", server);
         MainTab staffTab = new StaffTab("Staff", server);
-        MainTab supplierTab = new SupplierTab("Supplier", server);
-        MainTab ingredientTab = new IngredientTab("Ingredients", server);
+        IngredientTab ingredientTab = new IngredientTab("Ingredients", server);
+        SupplierTab supplierTab = new SupplierTab("Supplier", server, ingredientTab);
+        MainTab postcodeTab = new PostcodeTab("Postcodes", server, supplierTab);
+        MainTab orderTab = new OrderTab("Order", server);
+
         MainTab dishTab = new DishTab("Dishes",server);
 
-        tabs.getTabs().addAll(postcodeTab,droneTab, staffTab, supplierTab, ingredientTab,dishTab);
+        tabs.getTabs().addAll(postcodeTab,droneTab, staffTab, supplierTab, ingredientTab,dishTab, orderTab);
         root.getChildren().add(tabs);
 
 

@@ -1,5 +1,6 @@
 package comp1206.sushi.Tabs;
 
+import comp1206.sushi.common.Ingredient;
 import comp1206.sushi.common.Postcode;
 import comp1206.sushi.common.Supplier;
 import comp1206.sushi.server.ServerInterface;
@@ -19,10 +20,12 @@ public class SupplierTab extends MainTab {
     private ComboBox<Postcode> postcodeBox;
     private TextField input;
     private ServerInterface server;
+    private IngredientTab ingredientTab;
 
-    public SupplierTab(String name, ServerInterface server){
+    public SupplierTab(String name, ServerInterface server, IngredientTab ingredientTab){
         super(name);
         this.server = server;
+        this.ingredientTab = ingredientTab;
 
         supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
         postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
@@ -67,6 +70,7 @@ public class SupplierTab extends MainTab {
         server.addSupplier(input.getText(), postcodeBox.getValue() );
         supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
         supplierTableView.setItems(supplierObservableList);
+        ingredientTab.setSupplierComboBox(supplierObservableList);
         for (Supplier temp : server.getSuppliers()){
             System.out.println(temp.getName());
         }
@@ -82,11 +86,26 @@ public class SupplierTab extends MainTab {
 //        selectedProduct= supplierTableView.getSelectionModel().getSelectedItems();
 //        selectedProduct.forEach(allProduct::remove);
         try{
-            server.removeSupplier(supplierTableView.getSelectionModel().getSelectedItem());
+            Supplier supplier = supplierTableView.getSelectionModel().getSelectedItem();
+            for(Ingredient temp: server.getIngredients()){
+
+                if (supplier == temp.getSupplier()){
+                    throw new ServerInterface.UnableToDeleteException("lol");
+                }
+
+            }
+            server.removeSupplier(supplier);
             supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
             supplierTableView.setItems(supplierObservableList);
+            ingredientTab.setSupplierComboBox(supplierObservableList);
         }catch(ServerInterface.UnableToDeleteException e){
             System.out.println("Was unable to remove that.");
         }
+    }
+
+    public void setPostcodeBox(ObservableList<Postcode> postcodeObservableList){
+        postcodeBox.getItems().removeAll(this.postcodeObservableList);
+        postcodeBox.getItems().addAll(postcodeObservableList);
+
     }
 }

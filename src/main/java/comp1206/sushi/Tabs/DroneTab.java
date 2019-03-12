@@ -34,7 +34,7 @@ public class DroneTab extends MainTab {
         droneTableView = new TableView<>();
 
         TableColumn<Drone,String> nameColumn = new TableColumn<>("Name");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("speed"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         TableColumn<Drone, Number> speedColumn = new TableColumn<>("Speed");
         speedColumn.setCellValueFactory(new PropertyValueFactory<>("speed"));

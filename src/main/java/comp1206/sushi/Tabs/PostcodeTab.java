@@ -1,6 +1,7 @@
 package comp1206.sushi.Tabs;
 
 import comp1206.sushi.common.Postcode;
+import comp1206.sushi.common.Supplier;
 import comp1206.sushi.server.ServerInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,10 +22,13 @@ public class PostcodeTab extends MainTab {
     private ObservableList<Postcode> postcodeObservableList;
     private TextField input;
     private ServerInterface server;
+    private SupplierTab supplierTab;
 
-    public PostcodeTab(String name, ServerInterface server){
+    public PostcodeTab(String name, ServerInterface server, SupplierTab supplierTab){
         super(name);
         this.server = server;
+        this.supplierTab = supplierTab;
+
 
         postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
 
@@ -65,6 +69,7 @@ public class PostcodeTab extends MainTab {
         server.addPostcode(input.getText());
         postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
         postcodeTableView.setItems(postcodeObservableList);
+        supplierTab.setPostcodeBox(postcodeObservableList);
         for (Postcode temp : server.getPostcodes()){
             System.out.println(temp.getName());
         }
@@ -78,9 +83,19 @@ public class PostcodeTab extends MainTab {
 //        selectedProduct= postcodeTableView.getSelectionModel().getSelectedItems();
 //        selectedProduct.forEach(allProduct::remove);
         try{
-            server.removePostcode(postcodeTableView.getSelectionModel().getSelectedItem());
+            Postcode postcode = postcodeTableView.getSelectionModel().getSelectedItem();
+            for (Supplier temp : server.getSuppliers()) {
+
+                if(postcode == temp.getPostcode()){
+                    throw new ServerInterface.UnableToDeleteException("Bruv you're trying to delete a post code that is being in use");
+                }
+
+            }
+//            server.removePostcode(postcodeTableView.getSelectionModel().getSelectedItem());
+            server.removePostcode(postcode);
             postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
             postcodeTableView.setItems(postcodeObservableList);
+            supplierTab.setPostcodeBox(postcodeObservableList);
         }catch(ServerInterface.UnableToDeleteException e){
             System.out.println("Was unable to remove that.");
         }

@@ -8,5 +8,6 @@ module sushi {
         opens comp1206.sushi.server;
         opens comp1206.sushi;
         opens comp1206.sushi.common;
+        opens comp1206.sushi.Tabs;
 
 }

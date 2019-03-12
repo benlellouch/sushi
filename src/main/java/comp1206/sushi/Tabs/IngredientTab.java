@@ -1,5 +1,6 @@
 package comp1206.sushi.Tabs;
 
+import comp1206.sushi.common.Dish;
 import comp1206.sushi.common.Ingredient;
 import comp1206.sushi.common.Supplier;
 import comp1206.sushi.server.ServerInterface;
@@ -12,6 +13,7 @@ import javafx.scene.layout.VBox;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Map;
 
 public class IngredientTab extends MainTab {
 
@@ -110,11 +112,24 @@ public class IngredientTab extends MainTab {
 //        selectedProduct= ingredientTableView.getSelectionModel().getSelectedItems();
 //        selectedProduct.forEach(allProduct::remove);
         try{
-            server.removeIngredient(ingredientTableView.getSelectionModel().getSelectedItem());
+            Ingredient ingredient = ingredientTableView.getSelectionModel().getSelectedItem();
+            for (Dish temp : server.getDishes()){
+                for (Map.Entry<Ingredient,Number> cursor : temp.getRecipe().entrySet()) {
+                    if (ingredient == cursor.getKey()){
+                        throw new ServerInterface.UnableToDeleteException("putain");
+                    }
+                }
+            }
+            server.removeIngredient(ingredient);
             ingredientObservableList = FXCollections.observableArrayList(server.getIngredients());
             ingredientTableView.setItems(ingredientObservableList);
         }catch(ServerInterface.UnableToDeleteException e){
             System.out.println("Was unable to remove that.");
         }
+    }
+
+    public void setSupplierComboBox(ObservableList<Supplier> supplierObservableList){
+        supplierComboBox.getItems().removeAll(this.supplierObservableList);
+        supplierComboBox.getItems().addAll(supplierObservableList);
     }
 }
