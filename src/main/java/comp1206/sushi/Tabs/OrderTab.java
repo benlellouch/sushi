@@ -4,6 +4,7 @@ import comp1206.sushi.common.Order;
 import comp1206.sushi.server.ServerInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,6 +19,7 @@ public class OrderTab extends MainTab {
         orderObservableList = FXCollections.observableArrayList(server.getOrders());
 
         orderTableView = new TableView<>();
+        orderTableView.setPadding(new Insets(10,10,10,10));
 
         TableColumn<Order, String> nameColumn = new TableColumn<>("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));

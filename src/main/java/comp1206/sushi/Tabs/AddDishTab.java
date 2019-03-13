@@ -1,19 +1,20 @@
 package comp1206.sushi.Tabs;
 
 import comp1206.sushi.common.Dish;
-import comp1206.sushi.common.Ingredient;
 import comp1206.sushi.server.ServerInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class AddDishTab extends MainTab {
     ServerInterface server;
@@ -32,6 +33,7 @@ public class AddDishTab extends MainTab {
         this.dishObservableList = dishTab.getDishObservableList();
         this.dishTableView = dishTab.getDishTableView();
         VBox superPane = new VBox();
+        HBox buttonBox = new HBox();
         nameInput = new TextField();
         descriptionInput = new TextField();
         priceInput = new TextField();
@@ -45,12 +47,20 @@ public class AddDishTab extends MainTab {
         Button removeButton = new Button("Remove Dish");
         removeButton.setOnAction(event -> removeButtonClicked());
 
-        Button displayRecipe = new Button("Display Recipe");
-        displayRecipe.setOnAction(event -> displayRecipeClicked());
+        Label nameLabel = new Label("Name of the dish: ");
+        Label descriptionLabel = new Label("Description: ");
+        Label priceLabel = new Label("Price: ");
+        Label restockALabel = new Label("Restock Amount:");
+        Label restockTLabel = new Label("Restock Threshold: ");
 
 
 
-        superPane.getChildren().addAll(nameInput,descriptionInput,priceInput,restockAInput,restockTInput,addButton,removeButton, displayRecipe);
+
+        buttonBox.getChildren().addAll(addButton,removeButton);
+        buttonBox.setSpacing(10);
+        buttonBox.setPadding(new Insets(10,10,10,10));
+        buttonBox.setAlignment(Pos.CENTER);
+        superPane.getChildren().addAll(nameLabel,nameInput,descriptionLabel,descriptionInput,priceLabel,priceInput,restockALabel,restockAInput,restockTLabel,restockTInput,buttonBox);
 //        superPane.addRow(0, nameInput, descriptionInput, priceInput);
 //        superPane.addRow(1, restockAInput, restockTInput);
 //        superPane.addRow(2, addButton, removeButton);
@@ -83,23 +93,4 @@ public class AddDishTab extends MainTab {
         }
     }
 
-    public void displayRecipeClicked(){
-        Dish dish = dishTableView.getSelectionModel().getSelectedItem();
-        Map<Ingredient, Number> recipe = dish.getRecipe();
-        ArrayList<Recipe> recipeArrayList = new ArrayList<>();
-        for(Map.Entry<Ingredient,Number> cursor: recipe.entrySet()){
-                    Recipe newRecipe = new Recipe(cursor.getKey(), cursor.getValue());
-                    recipeArrayList.add(newRecipe);
-
-        }
-        ObservableList<Recipe> recipeObservableList = FXCollections.observableArrayList(recipeArrayList);
-        for (Recipe temp : recipeObservableList
-             ) {
-            System.out.println(temp.getIngredient().getName() + " " + temp.getAmount());
-
-        }
-
-        dishTab.setRecipeTableView(recipeObservableList);
-
-    }
 }

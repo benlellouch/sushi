@@ -5,6 +5,7 @@ import comp1206.sushi.common.Ingredient;
 import comp1206.sushi.server.ServerInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -36,18 +37,23 @@ public class DishTab extends MainTab {
 
 
         HBox superBox = new HBox();
+        superBox.setPadding(new Insets(10,10,10,10));
+        superBox.setSpacing(10);
 
         VBox recipeAndInputBox = new VBox();
 
         dishTableView = new TableView<>();
 
         recipeTableView = new TableView<>();
+        recipeTableView.setPrefWidth(200);
         // Table columns for Ingredient Table
         TableColumn<Recipe,Ingredient> nameColumn = new TableColumn<>("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient"));
+        nameColumn.setPrefWidth(110);
 
         TableColumn<Recipe,Number> unitColumn = new TableColumn<>("Amount");
         unitColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        unitColumn.setPrefWidth(110);
 
         recipeTableView.getColumns().addAll(nameColumn, unitColumn);
 //        recipeTableView.setItems(ingredientObservableList);

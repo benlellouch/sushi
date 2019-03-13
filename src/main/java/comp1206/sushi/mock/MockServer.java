@@ -24,7 +24,7 @@ public class MockServer implements ServerInterface {
 	public MockServer() {
 		
 		Postcode restaurantPostcode = new Postcode("SO17 1BJ");
-		restaurant = new Restaurant("Mock Restaurant",restaurantPostcode);
+		restaurant = new Restaurant("Cock Restaurant",restaurantPostcode);
 		
 		Postcode postcode1 = addPostcode("SO17 1TJ");
 		Postcode postcode2 = addPostcode("SO17 1BX");

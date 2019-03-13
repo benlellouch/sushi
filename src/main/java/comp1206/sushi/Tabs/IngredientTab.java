@@ -6,6 +6,7 @@ import comp1206.sushi.common.Supplier;
 import comp1206.sushi.server.ServerInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -36,8 +37,17 @@ public class IngredientTab extends MainTab {
         supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
 
         HBox superBox = new HBox();
+        superBox.setPadding(new Insets(10,10,10,10));
+        superBox.setSpacing(10);
 
         VBox inputBox = new VBox();
+//        inputBox.setAlignment(Pos.TOP_CENTER);
+        inputBox.setSpacing(10);
+
+        HBox buttonBox = new HBox();
+        buttonBox.setSpacing(10);
+
+
         ingredientTableView = new TableView<>();
 
         TableColumn<Ingredient,String> nameColumn = new TableColumn<>("Name");
@@ -59,27 +69,37 @@ public class IngredientTab extends MainTab {
         ingredientTableView.setItems(ingredientObservableList);
 
         nameInput = new TextField();
-        nameInput.setPromptText("Ex: SO17 4SZ");
+        Label nameLabel = new Label("Name:");
+
+        nameInput.setPromptText("Ex: Salmon");
+        nameInput.setPrefWidth(200);
 
         stringInput = new TextField();
-        stringInput.setPromptText("Enter a unit");
+        Label unitLabel = new Label("Unit:");
+        stringInput.setPromptText("Ex: kilograms");
 
         restockTInput = new TextField();
+        Label restockTLabel = new Label("Restock Threshold:");
         restockTInput.setPromptText("Enter a Threshold");
 
         restockAInput = new TextField();
+        Label restockALabel = new Label("Restock Amount:");
         restockAInput.setPromptText("Enter an Amount");
 
         Button addButton = new Button("Update");
+        addButton.setPrefWidth(95);
         Button removeButton = new Button ("Remove");
+        removeButton.setPrefWidth(95);
+        buttonBox.getChildren().addAll(addButton,removeButton);
 
         supplierComboBox = new ComboBox<>(supplierObservableList);
+        supplierComboBox.setPrefWidth(200);
         supplierComboBox.setPromptText("Select a supplier");
 
         addButton.setOnAction(e -> addButtonClicked());
         removeButton.setOnAction(event -> removeButtonClicked());
 
-        inputBox.getChildren().addAll(nameInput, stringInput, restockTInput, restockAInput, supplierComboBox, addButton, removeButton);
+        inputBox.getChildren().addAll(nameLabel,nameInput,unitLabel, stringInput,restockTLabel, restockTInput, restockALabel,restockAInput, supplierComboBox, buttonBox);
         superBox.getChildren().addAll(ingredientTableView, inputBox);
         this.setContent(superBox);
 

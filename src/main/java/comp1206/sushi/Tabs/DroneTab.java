@@ -5,6 +5,7 @@ import comp1206.sushi.common.Postcode;
 import comp1206.sushi.server.ServerInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,6 +30,8 @@ public class DroneTab extends MainTab {
         droneObservableList = FXCollections.observableArrayList(server.getDrones());
 
         HBox superBox = new HBox();
+        superBox.setPadding(new Insets(10,10,10,10));
+        superBox.setSpacing(10);
 
         VBox inputBox = new VBox();
         droneTableView = new TableView<>();

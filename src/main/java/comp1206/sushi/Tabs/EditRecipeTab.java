@@ -5,6 +5,8 @@ import comp1206.sushi.common.Ingredient;
 import comp1206.sushi.server.ServerInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
@@ -32,15 +34,28 @@ public class EditRecipeTab extends MainTab{
         ingredientObservableList = FXCollections.observableArrayList(server.getIngredients());
 
         VBox superbox = new VBox();
+        superbox.setAlignment(Pos.TOP_CENTER);
+        superbox.setPadding(new Insets(10,10,10,10));
+        superbox.setSpacing(10);
         HBox buttonbox = new HBox();
+        buttonbox.setAlignment(Pos.CENTER);
+        buttonbox.setSpacing(10);
 
         ingredientComboBox = new ComboBox<>(ingredientObservableList);
+        ingredientComboBox.setPromptText("Select ingredient");
+        ingredientComboBox.setPrefWidth(200);
 
-        Button addIngredient = new Button("Add Ingredient");
+
+
+        Button addIngredient = new Button("Add ");
+        addIngredient.setPrefWidth(95);
         addIngredient.setOnAction(event -> addIngredientClicked());
 
-        Button removeIngredient = new Button("Remove Ingredient");
+        Button removeIngredient = new Button("Remove ");
+        removeIngredient.setPrefWidth(95);
         removeIngredient.setOnAction(event -> removeIngredientClicked());
+
+
 
         buttonbox.getChildren().addAll(addIngredient,removeIngredient);
 

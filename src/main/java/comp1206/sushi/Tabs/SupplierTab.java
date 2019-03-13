@@ -6,6 +6,8 @@ import comp1206.sushi.common.Supplier;
 import comp1206.sushi.server.ServerInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -31,8 +33,12 @@ public class SupplierTab extends MainTab {
         postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
 
         HBox superBox = new HBox();
+        superBox.setPadding(new Insets(10,10,10,10));
+        superBox.setSpacing(10);
 
         VBox inputBox = new VBox();
+        inputBox.setSpacing(10);
+        HBox buttonBox = new HBox();
         supplierTableView = new TableView<>();
 
         TableColumn<Supplier,String> nameColumn = new TableColumn<>("Name");
@@ -47,19 +53,28 @@ public class SupplierTab extends MainTab {
         supplierTableView.getColumns().addAll(nameColumn, postcodeColumn, distanceColumn);
         supplierTableView.setItems(supplierObservableList);
 
+        // text field for supplier name
         input = new TextField();
-        input.setPromptText("Ex: SO17 4SZ");
+        input.setPromptText("Ex: Redstar Foodservice Ltd");
 
+        // add and remove buttons + styling of those buttons
         Button addButton = new Button("Update");
+        addButton.setPrefWidth(95);
         Button removeButton = new Button ("Remove");
+        removeButton.setPrefWidth(95);
 
+        buttonBox.setAlignment(Pos.CENTER);
+        buttonBox.setSpacing(10);
+        buttonBox.getChildren().addAll(addButton,removeButton);
+        //combo box for supplier postcode
         postcodeBox = new ComboBox<>(postcodeObservableList);
         postcodeBox.setPromptText("Select a postcode");
+        postcodeBox.setPrefWidth(200);
 
         addButton.setOnAction(e -> addButtonClicked());
         removeButton.setOnAction(event -> removeButtonClicked());
 
-        inputBox.getChildren().addAll(input, postcodeBox, addButton, removeButton);
+        inputBox.getChildren().addAll(input, postcodeBox, buttonBox);
         superBox.getChildren().addAll(supplierTableView, inputBox);
         this.setContent(superBox);
 
