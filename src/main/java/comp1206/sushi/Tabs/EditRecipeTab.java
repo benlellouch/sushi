@@ -87,4 +87,9 @@ public class EditRecipeTab extends MainTab{
             System.out.println(cursor.getKey().getName());
         }
     }
+
+    public void setIngredientComboBox(ObservableList<Ingredient> ingredientObservableList){
+        ingredientComboBox.getItems().removeAll(this.ingredientObservableList);
+        ingredientComboBox.setItems(ingredientObservableList);
+    }
 }

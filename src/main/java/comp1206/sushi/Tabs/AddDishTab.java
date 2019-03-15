@@ -30,8 +30,10 @@ public class AddDishTab extends MainTab {
     public AddDishTab (String name, ServerInterface server, DishTab dishTab){
         super(name);
         this.server = server;
-        this.dishObservableList = dishTab.getDishObservableList();
+        this.dishTab = dishTab;
+//        this.dishObservableList = dishTab.getDishObservableList();
         this.dishTableView = dishTab.getDishTableView();
+
         VBox superPane = new VBox();
         HBox buttonBox = new HBox();
         nameInput = new TextField();

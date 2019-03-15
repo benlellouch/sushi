@@ -37,12 +37,13 @@ public class ServerWindow extends Application implements UpdateListener {
 
         MainTab droneTab = new DroneTab("Drones", server);
         MainTab staffTab = new StaffTab("Staff", server);
-        IngredientTab ingredientTab = new IngredientTab("Ingredients", server);
-        SupplierTab supplierTab = new SupplierTab("Supplier", server, ingredientTab);
+        DishTab dishTab = new DishTab("Dishes",server);
+        IngredientTab ingredientTab = new IngredientTab("Ingredients", server, dishTab);
+        SupplierTab supplierTab = new SupplierTab("Supplier", server, ingredientTab.getAddIngredientTab());
         MainTab postcodeTab = new PostcodeTab("Postcodes", server, supplierTab);
         MainTab orderTab = new OrderTab("Order", server);
 
-        MainTab dishTab = new DishTab("Dishes",server);
+
 
         tabs.getTabs().addAll(postcodeTab,droneTab, staffTab, supplierTab, ingredientTab,dishTab, orderTab);
         root.getChildren().add(tabs);

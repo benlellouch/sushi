@@ -22,12 +22,12 @@ public class SupplierTab extends MainTab {
     private ComboBox<Postcode> postcodeBox;
     private TextField input;
     private ServerInterface server;
-    private IngredientTab ingredientTab;
+    private AddIngredientTab addIngredientTab;
 
-    public SupplierTab(String name, ServerInterface server, IngredientTab ingredientTab){
+    public SupplierTab(String name, ServerInterface server, AddIngredientTab addIngredientTab){
         super(name);
         this.server = server;
-        this.ingredientTab = ingredientTab;
+        this.addIngredientTab = addIngredientTab;
 
         supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
         postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
@@ -85,7 +85,7 @@ public class SupplierTab extends MainTab {
         server.addSupplier(input.getText(), postcodeBox.getValue() );
         supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
         supplierTableView.setItems(supplierObservableList);
-        ingredientTab.setSupplierComboBox(supplierObservableList);
+        addIngredientTab.setSupplierComboBox(supplierObservableList);
         for (Supplier temp : server.getSuppliers()){
             System.out.println(temp.getName());
         }
@@ -112,7 +112,7 @@ public class SupplierTab extends MainTab {
             server.removeSupplier(supplier);
             supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
             supplierTableView.setItems(supplierObservableList);
-            ingredientTab.setSupplierComboBox(supplierObservableList);
+            addIngredientTab.setSupplierComboBox(supplierObservableList);
         }catch(ServerInterface.UnableToDeleteException e){
             System.out.println("Was unable to remove that.");
         }

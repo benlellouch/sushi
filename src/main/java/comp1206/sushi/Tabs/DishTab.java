@@ -28,6 +28,7 @@ public class DishTab extends MainTab {
     private TextField priceInput;
     private TextField restockTInput;
     private TextField restockAInput;
+    private EditRecipeTab editRecipeTab;
 
     public DishTab(String name, ServerInterface server){
         super(name);
@@ -119,8 +120,8 @@ public class DishTab extends MainTab {
         MainTab addTab = new AddDishTab("Add Dish", server, this);
 //        MainTab addTab = new MainTab("Add Placeholder");
 //        MainTab addTab = createAddDishTab();
-        MainTab editTab = new EditRecipeTab("Edit Recipe", this, server);
-        addAndEditTab.getTabs().addAll(addTab,editTab );
+        editRecipeTab = new EditRecipeTab("Edit Recipe", this, server);
+        addAndEditTab.getTabs().addAll(addTab,editRecipeTab );
 
         recipeAndInputBox.getChildren().addAll(recipeTableView, addAndEditTab);
         superBox.getChildren().addAll(dishTableView, recipeAndInputBox);
@@ -137,6 +138,9 @@ public class DishTab extends MainTab {
 
     public void setDishTableView(ObservableList<Dish> dishObservableList) {
         dishTableView.setItems(dishObservableList);
+        for(Dish temp : server.getDishes()){
+            System.out.println(temp.getName());
+        }
     }
 
     public void setRecipeObservableList(ObservableList<Recipe> recipeObservableList) {
@@ -145,6 +149,10 @@ public class DishTab extends MainTab {
 
     public void setRecipeTableView(ObservableList<Recipe> recipeObservableList){
         recipeTableView.setItems(recipeObservableList);
+    }
+
+    public EditRecipeTab getEditRecipeTab(){
+        return editRecipeTab;
     }
 
     public TableView<Recipe> getRecipeTableView() {
@@ -173,14 +181,15 @@ public class DishTab extends MainTab {
 //        addDishTab.setContent(superPane);
 //        return addDishTab;
 //    }
-    public void printtest(){
-        System.out.println("this is a test");
-    }
     public void displayRecipe(Dish dish){
         Map<Ingredient, Number> recipe = dish.getRecipe();
         ArrayList<Recipe> recipeArrayList = new ArrayList<>();
         for(Map.Entry<Ingredient,Number> cursor: recipe.entrySet()){
             Recipe newRecipe = new Recipe(cursor.getKey(), cursor.getValue());
+            System.out.println("Map:");
+            System.out.println(cursor.getKey() + " " + cursor.getValue());
+            System.out.println("ArrayList:");
+            System.out.println(newRecipe.getIngredient() + " " + newRecipe.getAmount() );
             recipeArrayList.add(newRecipe);
 
         }
