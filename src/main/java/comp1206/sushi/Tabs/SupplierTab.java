@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.DuplicateFormatFlagsException;
+
 public class SupplierTab extends MainTab {
 
 
@@ -81,25 +83,35 @@ public class SupplierTab extends MainTab {
     }
 
     public void addButtonClicked(){
-        String supplier = input.getText();
-        Postcode postcode = postcodeBox.getValue();
-        if(!supplier.equals("")){
-                if (postcode!=null){
-                server.addSupplier(input.getText(), postcodeBox.getValue());
-                supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
-                supplierTableView.setItems(supplierObservableList);
-                addIngredientTab.setSupplierComboBox(supplierObservableList);
-                for (Supplier temp : server.getSuppliers()) {
-                    System.out.println(temp.getName());
+        try {
+            String supplier = input.getText();
+            Postcode postcode = postcodeBox.getValue();
+            for (Supplier cursor : server.getSuppliers()
+            ) {
+                if (supplier.toLowerCase().equals(cursor.getName().toLowerCase())) {
+                    throw new DuplicateFormatFlagsException("Trying to create a duplicate element");
                 }
+            }
+            if (!supplier.equals("")) {
+                if (postcode != null) {
+                    server.addSupplier(input.getText(), postcodeBox.getValue());
+                    supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
+                    supplierTableView.setItems(supplierObservableList);
+                    addIngredientTab.setSupplierComboBox(supplierObservableList);
+                    for (Supplier temp : server.getSuppliers()) {
+                        System.out.println(temp.getName());
+                    }
 
-                input.clear();
-                postcodeBox.setValue(null);
+                    input.clear();
+                    postcodeBox.setValue(null);
                 } else {
                     comboBoxAlert(this);
                 }
-        } else {
-            unableToParse(this);
+            } else {
+                unableToParse(this);
+            }
+        }catch (DuplicateFormatFlagsException e){
+            duplicateAlert();
         }
     }
 

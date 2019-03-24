@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.DuplicateFormatFlagsException;
 
 public class AddDishTab extends MainTab {
     ServerInterface server;
@@ -74,6 +75,11 @@ public class AddDishTab extends MainTab {
         try {
             String name = nameInput.getText();
             String description = descriptionInput.getText();
+            for(Dish dish: server.getDishes()){
+                if(name.toLowerCase().equals(dish.getName().toLowerCase())){
+                    throw new DuplicateFormatFlagsException("trying to duplicate an element");
+                }
+            }
             if(!name.equals("") && !description.equals("")) {
                 server.addDish(name, description, NumberFormat.getInstance().parse(priceInput.getText()), NumberFormat.getInstance().parse(restockTInput.getText()), NumberFormat.getInstance().parse(restockAInput.getText()));
                 dishObservableList = FXCollections.observableArrayList(server.getDishes());
@@ -86,6 +92,8 @@ public class AddDishTab extends MainTab {
             } else {unableToParse(this);}
         } catch (ParseException e){
             unableToParse(this);
+        }catch (DuplicateFormatFlagsException e){
+            duplicateAlert();
         }
     }
 

@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.DuplicateFormatFlagsException;
 import java.util.Map;
 
@@ -28,43 +29,43 @@ public class PostcodeTab extends MainTab {
 
     public PostcodeTab(String name, ServerInterface server, SupplierTab supplierTab){
         super(name);
-        this.server = server;
-        this.supplierTab = supplierTab;
+            this.server = server;
+            this.supplierTab = supplierTab;
 
 
-        postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
+            postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
 
-        HBox superBox = new HBox();
-        superBox.setPadding(new Insets(10,10,10,10));
-        superBox.setSpacing(10);
+            HBox superBox = new HBox();
+            superBox.setPadding(new Insets(10, 10, 10, 10));
+            superBox.setSpacing(10);
 
-        VBox inputBox = new VBox();
-        postcodeTableView = new TableView<>();
+            VBox inputBox = new VBox();
+            postcodeTableView = new TableView<>();
 
-        TableColumn<Postcode,String> postcodeColumn = new TableColumn<>("Postcode");
-        postcodeColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+            TableColumn<Postcode, String> postcodeColumn = new TableColumn<>("Postcode");
+            postcodeColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        TableColumn<Postcode, Map> latitudeColumn = new TableColumn<>("LatLong");
-        latitudeColumn.setCellValueFactory(new PropertyValueFactory<>("latLong"));
+            TableColumn<Postcode, Map> latitudeColumn = new TableColumn<>("LatLong");
+            latitudeColumn.setCellValueFactory(new PropertyValueFactory<>("latLong"));
 
-        TableColumn<Postcode, Number> distanceColumn = new TableColumn<>("Distance");
-        distanceColumn.setCellValueFactory(new PropertyValueFactory<>("distance"));
+            TableColumn<Postcode, Number> distanceColumn = new TableColumn<>("Distance");
+            distanceColumn.setCellValueFactory(new PropertyValueFactory<>("distance"));
 
-        postcodeTableView.getColumns().addAll(postcodeColumn, latitudeColumn, distanceColumn);
-        postcodeTableView.setItems(postcodeObservableList);
+            postcodeTableView.getColumns().addAll(postcodeColumn, latitudeColumn, distanceColumn);
+            postcodeTableView.setItems(postcodeObservableList);
 
-        input = new TextField();
-        input.setPromptText("Ex: SO17 4SZ");
+            input = new TextField();
+            input.setPromptText("Ex: SO17 4SZ");
 
-        Button addButton = new Button("Update");
-        Button removeButton = new Button ("Remove");
+            Button addButton = new Button("Update");
+            Button removeButton = new Button("Remove");
 
-        addButton.setOnAction(e -> addButtonClicked());
-        removeButton.setOnAction(event -> removeButtonClicked());
+            addButton.setOnAction(e -> addButtonClicked());
+            removeButton.setOnAction(event -> removeButtonClicked());
 
-        inputBox.getChildren().addAll(input, addButton, removeButton);
-        superBox.getChildren().addAll(postcodeTableView , inputBox);
-        this.setContent(superBox);
+            inputBox.getChildren().addAll(input, addButton, removeButton);
+            superBox.getChildren().addAll(postcodeTableView, inputBox);
+            this.setContent(superBox);
 
     }
 
@@ -86,7 +87,7 @@ public class PostcodeTab extends MainTab {
                 postcodeTableView.setItems(postcodeObservableList);
                 supplierTab.setPostcodeBox(postcodeObservableList);
                 for (Postcode temp : server.getPostcodes()) {
-                    System.out.println(temp.getName());
+                    System.out.println(temp.getName() + " " + temp.getDistance());
                 }
 //        postcodeTableView.getItems().add(postcode);
                 input.clear();
@@ -96,6 +97,8 @@ public class PostcodeTab extends MainTab {
             }
         }catch (DuplicateFormatFlagsException e){
             duplicateAlert();
+        } catch (IOException e){
+            System.out.println("fuck off let me compile");
         }
     }
 

@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.DuplicateFormatFlagsException;
 import java.util.Map;
 
 public class AddIngredientTab extends MainTab {
@@ -83,6 +84,12 @@ public class AddIngredientTab extends MainTab {
             Supplier supplier = supplierComboBox.getValue();
             Number restockAmount = NumberFormat.getInstance().parse(restockAInput.getText());
             Number restockThreshold = NumberFormat.getInstance().parse(restockTInput.getText());
+            for (Ingredient ingredient: server.getIngredients()
+                 ) {
+                if (name.toLowerCase().equals(ingredient.getName().toLowerCase())){
+                    throw new DuplicateFormatFlagsException("Trying to duplicate an item");
+                }
+            }
             if(!name.equals("") && !unit.equals("")) {
                 if (supplier!= null) {
                     server.addIngredient(nameInput.getText(), stringInput.getText(), supplierComboBox.getValue(), NumberFormat.getInstance().parse(restockTInput.getText()), NumberFormat.getInstance().parse(restockAInput.getText()));
@@ -106,6 +113,8 @@ public class AddIngredientTab extends MainTab {
             } else {unableToParse(this);}
         } catch (ParseException e){
             unableToParse(this);
+        } catch (DuplicateFormatFlagsException e){
+            duplicateAlert();
         }
     }
 
