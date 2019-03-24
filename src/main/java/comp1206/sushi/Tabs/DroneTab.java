@@ -28,6 +28,13 @@ public class DroneTab extends MainTab {
         super(name);
         this.server = server;
         droneObservableList = FXCollections.observableArrayList(server.getDrones());
+        setStatus();
+        buildUI();
+
+
+    }
+
+    public void buildUI(){
 
         HBox superBox = new HBox();
         superBox.setPadding(new Insets(10,10,10,10));
@@ -72,7 +79,6 @@ public class DroneTab extends MainTab {
         inputBox.getChildren().addAll(input, addButton, removeButton);
         superBox.getChildren().addAll(droneTableView, inputBox);
         this.setContent(superBox);
-
     }
 
     public void addButtonClicked(){
@@ -80,6 +86,7 @@ public class DroneTab extends MainTab {
         try {
             server.addDrone(NumberFormat.getInstance().parse(input.getText()));
             droneObservableList = FXCollections.observableArrayList(server.getDrones());
+            setStatus();
             droneTableView.setItems(droneObservableList);
             for (Drone temp : server.getDrones()) {
                 System.out.println(temp.getName());
@@ -87,7 +94,7 @@ public class DroneTab extends MainTab {
 //        droneTableView.getItems().add(postcode);
             input.clear();
         }catch (ParseException e){
-            System.out.println("Was unable to parse number ");
+            unableToParse(this);
         }
     }
 
@@ -102,6 +109,12 @@ public class DroneTab extends MainTab {
             droneTableView.setItems(droneObservableList);
         }catch(ServerInterface.UnableToDeleteException e){
             System.out.println("Was unable to remove that.");
+        }
+    }
+
+    public void setStatus(){
+        for(Drone drone: droneObservableList){
+            drone.setStatus(server.getDroneStatus(drone));
         }
     }
 }

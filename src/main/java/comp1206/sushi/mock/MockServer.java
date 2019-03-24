@@ -24,7 +24,7 @@ public class MockServer implements ServerInterface {
 	public MockServer() {
 		
 		Postcode restaurantPostcode = new Postcode("SO17 1BJ");
-		restaurant = new Restaurant("Cock Restaurant",restaurantPostcode);
+		restaurant = new Restaurant("Mock Restaurant",restaurantPostcode);
 		
 		Postcode postcode1 = addPostcode("SO17 1TJ");
 		Postcode postcode2 = addPostcode("SO17 1BX");
@@ -60,6 +60,8 @@ public class MockServer implements ServerInterface {
 		addDrone(1);
 		addDrone(2);
 		addDrone(3);
+
+		users.add(new User("brl1u18", "password123", "52 avenue ollivary", postcode1));
 	}
 	
 	@Override

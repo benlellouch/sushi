@@ -42,10 +42,11 @@ public class ServerWindow extends Application implements UpdateListener {
         SupplierTab supplierTab = new SupplierTab("Supplier", server, ingredientTab.getAddIngredientTab());
         MainTab postcodeTab = new PostcodeTab("Postcodes", server, supplierTab);
         MainTab orderTab = new OrderTab("Order", server);
+        MainTab userTab = new UserTab("User", server);
 
 
 
-        tabs.getTabs().addAll(postcodeTab,droneTab, staffTab, supplierTab, ingredientTab,dishTab, orderTab);
+        tabs.getTabs().addAll(postcodeTab,droneTab, staffTab, supplierTab, ingredientTab,dishTab, orderTab, userTab);
         root.getChildren().add(tabs);
 
 

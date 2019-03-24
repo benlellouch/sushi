@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.DuplicateFormatFlagsException;
 import java.util.Map;
 
 public class PostcodeTab extends MainTab {
@@ -68,16 +69,34 @@ public class PostcodeTab extends MainTab {
     }
 
     public void addButtonClicked(){
-//        Postcode postcode = new Postcode(input.getText());
-        server.addPostcode(input.getText());
-        postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
-        postcodeTableView.setItems(postcodeObservableList);
-        supplierTab.setPostcodeBox(postcodeObservableList);
-        for (Postcode temp : server.getPostcodes()){
-            System.out.println(temp.getName());
-        }
+        try {
+            String postcode = input.getText().toUpperCase();
+            Postcode test = new Postcode(postcode);
+            for (Postcode cursor : server.getPostcodes()
+            ) {
+                if (cursor.getName().equals(test.getName())) {
+
+                    throw new DuplicateFormatFlagsException("Trying to create a duplicate object");
+                }
+            }
+            if (postcode.matches("^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z])))) [0-9][A-Za-z]{2})$")) {
+
+                server.addPostcode(postcode);
+                postcodeObservableList = FXCollections.observableArrayList(server.getPostcodes());
+                postcodeTableView.setItems(postcodeObservableList);
+                supplierTab.setPostcodeBox(postcodeObservableList);
+                for (Postcode temp : server.getPostcodes()) {
+                    System.out.println(temp.getName());
+                }
 //        postcodeTableView.getItems().add(postcode);
-        input.clear();
+                input.clear();
+            } else {
+                unableToParse(this);
+                input.clear();
+            }
+        }catch (DuplicateFormatFlagsException e){
+            duplicateAlert();
+        }
     }
 
     public void removeButtonClicked(){
@@ -90,7 +109,7 @@ public class PostcodeTab extends MainTab {
             for (Supplier temp : server.getSuppliers()) {
 
                 if(postcode == temp.getPostcode()){
-                    throw new ServerInterface.UnableToDeleteException("Bruv you're trying to delete a post code that is being in use");
+                    throw new ServerInterface.UnableToDeleteException("Bruv you're trying to delete a postcode that is being in use");
                 }
 
             }
@@ -100,7 +119,7 @@ public class PostcodeTab extends MainTab {
             postcodeTableView.setItems(postcodeObservableList);
             supplierTab.setPostcodeBox(postcodeObservableList);
         }catch(ServerInterface.UnableToDeleteException e){
-            System.out.println("Was unable to remove that.");
+            unableToDeleteAlert(this);
         }
     }
 }

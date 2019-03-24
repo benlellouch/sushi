@@ -81,25 +81,30 @@ public class SupplierTab extends MainTab {
     }
 
     public void addButtonClicked(){
-//        Postcode postcode = new Postcode(input.getText());
-        server.addSupplier(input.getText(), postcodeBox.getValue() );
-        supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
-        supplierTableView.setItems(supplierObservableList);
-        addIngredientTab.setSupplierComboBox(supplierObservableList);
-        for (Supplier temp : server.getSuppliers()){
-            System.out.println(temp.getName());
-        }
-//        supplierTableView.getItems().add(postcode);
+        String supplier = input.getText();
+        Postcode postcode = postcodeBox.getValue();
+        if(!supplier.equals("")){
+                if (postcode!=null){
+                server.addSupplier(input.getText(), postcodeBox.getValue());
+                supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
+                supplierTableView.setItems(supplierObservableList);
+                addIngredientTab.setSupplierComboBox(supplierObservableList);
+                for (Supplier temp : server.getSuppliers()) {
+                    System.out.println(temp.getName());
+                }
 
-        input.clear();
-        postcodeBox.setValue(null);
+                input.clear();
+                postcodeBox.setValue(null);
+                } else {
+                    comboBoxAlert(this);
+                }
+        } else {
+            unableToParse(this);
+        }
     }
 
     public void removeButtonClicked(){
-//        ObservableList<Postcode> selectedProduct, allProduct;
-//        allProduct = supplierTableView.getItems();
-//        selectedProduct= supplierTableView.getSelectionModel().getSelectedItems();
-//        selectedProduct.forEach(allProduct::remove);
+
         try{
             Supplier supplier = supplierTableView.getSelectionModel().getSelectedItem();
             for(Ingredient temp: server.getIngredients()){
@@ -114,7 +119,7 @@ public class SupplierTab extends MainTab {
             supplierTableView.setItems(supplierObservableList);
             addIngredientTab.setSupplierComboBox(supplierObservableList);
         }catch(ServerInterface.UnableToDeleteException e){
-            System.out.println("Was unable to remove that.");
+            unableToDeleteAlert(this);
         }
     }
 

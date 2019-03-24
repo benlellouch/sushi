@@ -33,6 +33,12 @@ public class DishTab extends MainTab {
     public DishTab(String name, ServerInterface server){
         super(name);
         this.server = server;
+        buildUI();
+
+
+    }
+
+    public void buildUI(){
         dishObservableList = FXCollections.observableArrayList(server.getDishes());
         ingredientObservableList = FXCollections.observableList(server.getIngredients());
 
@@ -118,16 +124,15 @@ public class DishTab extends MainTab {
         // Setting up the Add new Dish tab and the edit recipe tab
         TabPane addAndEditTab = new TabPane();
         MainTab addTab = new AddDishTab("Add Dish", server, this);
+        MainTab editDish = new EditDish("Edit Dish", this,server);
 //        MainTab addTab = new MainTab("Add Placeholder");
 //        MainTab addTab = createAddDishTab();
         editRecipeTab = new EditRecipeTab("Edit Recipe", this, server);
-        addAndEditTab.getTabs().addAll(addTab,editRecipeTab );
+        addAndEditTab.getTabs().addAll(addTab,editDish,editRecipeTab );
 
         recipeAndInputBox.getChildren().addAll(recipeTableView, addAndEditTab);
         superBox.getChildren().addAll(dishTableView, recipeAndInputBox);
         this.setContent(superBox);
-
-
     }
 
     public ObservableList<Dish> getDishObservableList() {
@@ -182,6 +187,7 @@ public class DishTab extends MainTab {
 //        return addDishTab;
 //    }
     public void displayRecipe(Dish dish){
+
         Map<Ingredient, Number> recipe = dish.getRecipe();
         ArrayList<Recipe> recipeArrayList = new ArrayList<>();
         for(Map.Entry<Ingredient,Number> cursor: recipe.entrySet()){

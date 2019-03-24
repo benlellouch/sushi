@@ -27,7 +27,13 @@ public class StaffTab extends MainTab {
         this.server = server;
 
         staffObservableList = FXCollections.observableArrayList(server.getStaff());
+        setStaffStatus();
 
+        buildUI();
+
+    }
+
+    public void buildUI(){
         HBox superBox = new HBox();
         superBox.setPadding(new Insets(10,10,10,10));
         superBox.setSpacing(10);
@@ -60,19 +66,23 @@ public class StaffTab extends MainTab {
         inputBox.getChildren().addAll(input, addButton, removeButton);
         superBox.getChildren().addAll(staffTableView, inputBox);
         this.setContent(superBox);
-
     }
 
     public void addButtonClicked(){
-//        Postcode postcode = new Postcode(input.getText());
-        server.addStaff(input.getText());
-        staffObservableList = FXCollections.observableArrayList(server.getStaff());
-        staffTableView.setItems(staffObservableList);
-        for (Staff temp : server.getStaff()){
-            System.out.println(temp.getName());
-        }
+        String staff = input.getText();
+        if(!staff.equals("")) {
+            server.addStaff(staff);
+            staffObservableList = FXCollections.observableArrayList(server.getStaff());
+            setStaffStatus();
+            staffTableView.setItems(staffObservableList);
+            for (Staff temp : server.getStaff()) {
+                System.out.println(temp.getName());
+            }
 //        staffTableView.getItems().add(postcode);
-        input.clear();
+            input.clear();
+        } else {
+            unableToParse(this);
+        }
     }
 
     public void removeButtonClicked(){
@@ -86,6 +96,12 @@ public class StaffTab extends MainTab {
             staffTableView.setItems(staffObservableList);
         }catch(ServerInterface.UnableToDeleteException e){
             System.out.println("Was unable to remove that.");
+        }
+    }
+
+    public void setStaffStatus(){
+        for(Staff staff : staffObservableList) {
+            staff.setStatus(server.getStaffStatus(staff));
         }
     }
 }

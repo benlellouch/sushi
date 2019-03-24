@@ -78,24 +78,34 @@ public class AddIngredientTab extends MainTab {
     public void addButtonClicked(){
 //        Postcode postcode = new Postcode(nameInput.getText());
         try {
-            server.addIngredient(nameInput.getText(), stringInput.getText(), supplierComboBox.getValue(), NumberFormat.getInstance().parse(restockTInput.getText()), NumberFormat.getInstance().parse(restockAInput.getText()));
+            String name = nameInput.getText();
+            String unit = stringInput.getText();
+            Supplier supplier = supplierComboBox.getValue();
+            Number restockAmount = NumberFormat.getInstance().parse(restockAInput.getText());
+            Number restockThreshold = NumberFormat.getInstance().parse(restockTInput.getText());
+            if(!name.equals("") && !unit.equals("")) {
+                if (supplier!= null) {
+                    server.addIngredient(nameInput.getText(), stringInput.getText(), supplierComboBox.getValue(), NumberFormat.getInstance().parse(restockTInput.getText()), NumberFormat.getInstance().parse(restockAInput.getText()));
 //            ingredientObservableList = FXCollections.observableArrayList(server.getIngredients());
-            ObservableList<Ingredient> ingredientObservableList = FXCollections.observableArrayList(server.getIngredients());
+                    ObservableList<Ingredient> ingredientObservableList = FXCollections.observableArrayList(server.getIngredients());
 //            ingredientTableView.setItems(ingredientObservableList);
-            ingredientTab.setItems(ingredientObservableList);
-            editRecipeTab.setIngredientComboBox(ingredientObservableList);
-            for (Ingredient temp : server.getIngredients()) {
-                System.out.println(temp.getName());
-            }
-//        ingredientTableView.getItems().add(postcode);
+                    ingredientTab.setItems(ingredientObservableList);
+                    editRecipeTab.setIngredientComboBox(ingredientObservableList);
+                    for (Ingredient temp : server.getIngredients()) {
+                        System.out.println(temp.getName());
+                    }
 
-            nameInput.clear();
-            stringInput.clear();
-            restockAInput.clear();
-            restockTInput.clear();
-            supplierComboBox.setValue(null);
+                    nameInput.clear();
+                    stringInput.clear();
+                    restockAInput.clear();
+                    restockTInput.clear();
+                    supplierComboBox.setValue(null);
+                } else {
+                    comboBoxAlert(this);
+                }
+            } else {unableToParse(this);}
         } catch (ParseException e){
-            System.out.println("Was unable to parse the numbers in the text input");
+            unableToParse(this);
         }
     }
 
@@ -121,7 +131,7 @@ public class AddIngredientTab extends MainTab {
                 System.out.println(temp.getName());
             }
         }catch(ServerInterface.UnableToDeleteException e){
-            System.out.println("Was unable to remove that.");
+            unableToDeleteAlert(this);
         }
     }
 

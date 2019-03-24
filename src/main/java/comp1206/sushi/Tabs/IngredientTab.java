@@ -27,7 +27,12 @@ public class IngredientTab extends MainTab {
         super(name);
         this.server = server;
         this.dishTab = dishTab;
+        buildUI();
 
+
+
+    }
+    public void buildUI(){
         ingredientObservableList = FXCollections.observableArrayList(server.getIngredients());
         supplierObservableList = FXCollections.observableArrayList(server.getSuppliers());
 
@@ -65,7 +70,6 @@ public class IngredientTab extends MainTab {
 
         superBox.getChildren().addAll(ingredientTableView, inputTabPane);
         this.setContent(superBox);
-
     }
 
     public AddIngredientTab getAddIngredientTab() {
@@ -97,6 +101,8 @@ public class IngredientTab extends MainTab {
     public void setSupplierObservableList(ObservableList<Supplier> supplierObservableList) {
         this.supplierObservableList = supplierObservableList;
     }
+
+
 
 
 }

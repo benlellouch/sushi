@@ -72,16 +72,20 @@ public class AddDishTab extends MainTab {
 
     public void addButtonClicked(){
         try {
-            server.addDish(nameInput.getText(), descriptionInput.getText(), NumberFormat.getInstance().parse(priceInput.getText()), NumberFormat.getInstance().parse(restockTInput.getText()), NumberFormat.getInstance().parse(restockAInput.getText()));
-            dishObservableList = FXCollections.observableArrayList(server.getDishes());
-            dishTab.setDishTableView(dishObservableList);
-            nameInput.clear();
-            descriptionInput.clear();
-            priceInput.clear();
-            restockAInput.clear();
-            restockTInput.clear();
+            String name = nameInput.getText();
+            String description = descriptionInput.getText();
+            if(!name.equals("") && !description.equals("")) {
+                server.addDish(name, description, NumberFormat.getInstance().parse(priceInput.getText()), NumberFormat.getInstance().parse(restockTInput.getText()), NumberFormat.getInstance().parse(restockAInput.getText()));
+                dishObservableList = FXCollections.observableArrayList(server.getDishes());
+                dishTab.setDishTableView(dishObservableList);
+                nameInput.clear();
+                descriptionInput.clear();
+                priceInput.clear();
+                restockAInput.clear();
+                restockTInput.clear();
+            } else {unableToParse(this);}
         } catch (ParseException e){
-            System.out.println("Was unable to parse the numbers entered. ");
+            unableToParse(this);
         }
     }
 
