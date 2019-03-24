@@ -1,5 +1,7 @@
 package comp1206.sushi.common;
 
+import javafx.scene.control.Alert;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -107,6 +109,10 @@ public class Postcode extends Model {
 			System.out.println("I have no idea what to do");
 		} catch (IOException e){
 			System.out.println("In postcode.java");
+		} catch (StringIndexOutOfBoundsException e){
+			Alert a1 = new Alert(Alert.AlertType.ERROR);
+			a1.setContentText("Can't get position of postcode");
+			a1.showAndWait();
 		}
 
 	}
