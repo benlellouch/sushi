@@ -24,7 +24,7 @@ public class ServerWindow extends Application implements UpdateListener {
         launch(args);
     }
 
-
+    MapTab mapTab;
     @Override
     public void start(Stage stage) throws ReflectiveOperationException, IOException {
         String serverClassName = getParameters().getRaw().get(0);
@@ -43,7 +43,7 @@ public class ServerWindow extends Application implements UpdateListener {
         MainTab postcodeTab = new PostcodeTab("Postcodes", server, supplierTab);
         MainTab orderTab = new OrderTab("Order", server);
         MainTab userTab = new UserTab("User", server);
-        MainTab mapTab = new MapTab("Map", server);
+        mapTab = new MapTab("Map", server);
 
 
 
@@ -56,6 +56,7 @@ public class ServerWindow extends Application implements UpdateListener {
         stage.setScene(new Scene(root));
         server.addUpdateListener(this);
         stage.show();
+        startTimer();
     }
 
     public void init(){
@@ -84,7 +85,7 @@ public class ServerWindow extends Application implements UpdateListener {
      * Refresh all parts of the server application based on receiving new data, calling the server afresh
      */
     public void refreshAll() {
-
+        mapTab.getMap();
     }
 
     @Override

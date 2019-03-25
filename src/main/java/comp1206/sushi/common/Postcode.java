@@ -97,7 +97,7 @@ public class Postcode extends Model {
 			String string = bufferedReader.readLine();
 			int indexstart = string.indexOf("\"lat\":\"");
 			int indexend= string.indexOf("\",\"lo");
-			Double lat = Double.valueOf(string.substring(indexstart+8,indexend));
+			Double lat = Double.valueOf(string.substring(indexstart+7,indexend));
 			indexstart = string.indexOf("\"long\":\"");
 			indexend = string.indexOf("\"}");
 			Double longitude = Double.valueOf(string.substring(indexstart+8,indexend));

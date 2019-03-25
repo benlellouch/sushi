@@ -53,16 +53,16 @@ public class DroneTab extends MainTab {
         progressColumn.setCellValueFactory(new PropertyValueFactory<>("progress"));
 
         TableColumn<Drone, Number> capacityColumn = new TableColumn<>("Capacity");
-        progressColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+        capacityColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
 
         TableColumn<Drone, String> statusColumn = new TableColumn<>("Status");
-        progressColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         TableColumn<Drone, Postcode> sourceColumn = new TableColumn<>("Source");
-        progressColumn.setCellValueFactory(new PropertyValueFactory<>("source"));
+        sourceColumn.setCellValueFactory(new PropertyValueFactory<>("source"));
 
-        TableColumn<Drone, Number> destinationColumn = new TableColumn<>("Destination");
-        progressColumn.setCellValueFactory(new PropertyValueFactory<>("destination"));
+        TableColumn<Drone, Postcode> destinationColumn = new TableColumn<>("Destination");
+        destinationColumn.setCellValueFactory(new PropertyValueFactory<>("destination"));
 
         droneTableView.getColumns().addAll(nameColumn, speedColumn, progressColumn, capacityColumn, statusColumn, sourceColumn, destinationColumn);
         droneTableView.setItems(droneObservableList);
@@ -89,7 +89,7 @@ public class DroneTab extends MainTab {
             setStatus();
             droneTableView.setItems(droneObservableList);
             for (Drone temp : server.getDrones()) {
-                System.out.println(temp.getName());
+                System.out.println(temp.getName() + temp.getSource().getName());
             }
 //        droneTableView.getItems().add(postcode);
             input.clear();

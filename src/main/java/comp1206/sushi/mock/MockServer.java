@@ -167,6 +167,9 @@ public class MockServer implements ServerInterface {
 	@Override
 	public Drone addDrone(Number speed) {
 		Drone mock = new Drone(speed);
+		Random random = new Random();
+		int randomPostcode = random.nextInt(postcodes.size());
+		mock.setSource(postcodes.get(randomPostcode));
 		this.drones.add(mock);
 		return mock;
 	}

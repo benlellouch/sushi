@@ -4,7 +4,6 @@ module sushi {
         requires javafx.graphics;
         requires javafx.base;
         requires javafx.media;
-        requires GMapsFX;
     requires java.desktop;
 
     opens comp1206.sushi.server;
